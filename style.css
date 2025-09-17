@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Poppins:wght@600&family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* index page */
+.home-container {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+.js-container {
+    margin-left: 20%;
+    background-color: #f0dc4e;
+    color: #2d342c;
+    width: 25%;
+    height: 80%;
+    font-weight: bold;
+    font-size: 10rem;
+    position: relative;
+}
+
+.js-container::after {
+    content: "JS";
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    margin: 10px;
+}
+
+.start-container {
+    height: 80%;
+    width: 15%;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.start-container h1 {
+    font-size: 4rem;
+    color: #2d342c;
+}
+
+#javascript {
+    color: #f0b84e;
+}
+
+#start-quiz {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px 0px;
+    border-radius: 15px;
+    background-color: #16325B;
+}
