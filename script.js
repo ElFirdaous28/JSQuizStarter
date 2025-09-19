@@ -1,26 +1,3 @@
-// Function to load questions
-async function loadQuestions() {
-    try {
-        const response = await fetch('questions.json');
-        const data = await response.json();
-
-        const questions = {};
-        data.themes.forEach(theme => {
-            questions[theme.theme] = theme.questions;
-        });
-
-        return questions;
-    } catch (error) {
-        console.error('Error loading questions JSON:', error);
-        return {};
-    }
-}
-
-loadQuestions().then(questions => {
-    console.log(questions);
-    console.log(questions["JavaScript Basics"])
-});
-
 // Save theme choice
 function saveChoosedTheme(choice) {
     localStorage.setItem("selectedTheme", choice);
@@ -44,17 +21,29 @@ function initializeUserInfos(event) {
 
     const userInfos = {
         themes: {
-            "JavaScript Basics": [],
-            "DOM & Events": [],
-            "Objects & Arrays": []
+            "JavaScript Basics": {
+                answers: [],
+                score: 0,
+                totalTime: 0
+            },
+            "DOM & Events": {
+                answers: [],
+                score: 0,
+                totalTime: 0
+            },
+            "Objects & Arrays": {
+                answers: [],
+                score: 0,
+                totalTime: 0
+            }
         }
     };
-
     const users = JSON.parse(localStorage.getItem("users")) || {};
 
     users[username] = userInfos;
 
     localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem("currentUser", username);
 
     window.location.href = "thems.html";
     return true;
