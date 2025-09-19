@@ -34,7 +34,7 @@ let time;
 
 // timer
 function startTimer() {
-    time = 0;
+    time = 20;
     timerElement.textContent = `00:${String(time).padStart(2, '0')}`;
     timer = setInterval(() => {
         time--;
@@ -62,9 +62,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // start the quiz
     themeQuestions = questions[selectedTheme];
+    if (window.location.href === "http://127.0.0.1:5500/quiz.html") {        
+        setHtmlQuestion(questionIndex);
+        startTimer();
+    }
 
-    setHtmlQuestion(questionIndex);
-    startTimer();
 });
 
 // add the question as html
@@ -154,17 +156,21 @@ function checkAnswers(correctAnswers, userAnswers) {
 }
 
 function saveUserAnswer(questionId, userAnswers) {
-
     if (!users[currentUser]) return;
 
     if (!users[currentUser].themes[selectedTheme]) {
         users[currentUser].themes[selectedTheme] = { answers: [], score: 0, totalTime: 0 };
     }
 
-    users[currentUser].themes[selectedTheme].answers.push({
-        questionId: questionId,
-        userAnswers: userAnswers
-    });
+    let answers = users[currentUser].themes[selectedTheme].answers;
+
+    let existing = answers.find(answer => answer.questionId === questionId);
+
+    if (existing) {
+        existing.userAnswers = userAnswers;
+    } else {
+        answers.push({ questionId, userAnswers });
+    }
 
     localStorage.setItem("users", JSON.stringify(users));
 }

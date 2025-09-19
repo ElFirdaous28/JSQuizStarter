@@ -19,6 +19,7 @@
  h1,
  h2 {
      font-family: 'Poppins', sans-serif;
+     color: #16325B;
  }
 
  /* ================================================= index page ================================================= */
@@ -253,21 +254,20 @@
      gap: 15px;
  }
 
- .quiz-button {
+ .quiz-button,
+ #download-button {
+     border: none;
      text-decoration: none;
-     text-align: center;
      padding: 15px 25px;
      border-radius: 12px;
      font-weight: 600;
      font-size: 1.1rem;
      transition: all 0.3s ease;
      display: block;
- }
-
- .start-quiz {
      background-color: #16325B;
      color: white;
  }
+
 
  .start-quiz:hover {
      background-color: #1e3d6f;
@@ -563,4 +563,15 @@
      .buttons {
          flex-direction: column;
      }
+ }
+
+
+ .feedback-option.correct {
+     background-color: #d1fae5;
+     border-color: #10b981;
+ }
+
+ .feedback-option.incorrect {
+     background-color: #fee2e2;
+     border-color: #ef4444;
  }
