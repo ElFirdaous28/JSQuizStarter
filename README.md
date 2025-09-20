@@ -40,7 +40,7 @@ Le projet est également déployé sur GitHub Pages et peut être consulté dire
 ## Utilisation
 
 1. **Ouvrir le projet :**  
-   - Si vous avez cloné le dépôt, ouvrez le fichier `index.html` avec un navigateur ou utilisez un serveur local comme [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
+   - Si vous avez cloné le dépôt, ouvrez le fichier `index.html`
 
 2. **Choisir un nom d'utilisateur :**  
    - Avant de commencer le quiz, saisissez un nom d'utilisateur unique qui sera utilisé pour enregistrer vos résultats.
