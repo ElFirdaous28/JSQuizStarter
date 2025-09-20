@@ -113,11 +113,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // start the quiz
     themeQuestions = questions[selectedTheme];
-    if (window.location.href === "http://127.0.0.1:5500/quiz.html") {
+    if (window.location.href.includes("quiz")) {
         setHtmlQuestion(questionIndex);
         startTimer();
     }
-    if (window.location.href === "http://127.0.0.1:5500/results.html") {
+
+    if (window.location.href.includes("results")) {
         displayResults();
         displayCorrect();
     }
@@ -323,5 +324,34 @@ function displayCorrect() {
     });
 }
 
+// download result as pdf
+document.getElementById("download-button").addEventListener("click", function () {
+    html2canvas(document.getElementById("content-to-download"), {
+        scale: 2 // better quality
+    }).then(function (canvas) {
+        const imgData = canvas.toDataURL("image/png");
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF("p", "mm", "a4");
 
+        const imgWidth = 190; // width in A4 (210 - margins)
+        const pageHeight = pdf.internal.pageSize.height; // 297mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
+        let heightLeft = imgHeight;
+        let position = 10;
+
+        // First page
+        pdf.addImage(imgData, "PNG", 10, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        // Add extra pages if needed
+        while (heightLeft > 0) {
+            position = heightLeft - imgHeight + 10;
+            pdf.addPage();
+            pdf.addImage(imgData, "PNG", 10, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+        }
+
+        pdf.save(`JSQuizStarter_${currentUser}`);
+    });
+});
