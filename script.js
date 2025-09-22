@@ -58,17 +58,20 @@ function initializeUserInfos(event) {
             "JavaScript Basics": {
                 answers: [],
                 score: 0,
-                totalTime: 0
+                totalTime: 0,
+                dateTime: ''
             },
             "DOM & Events": {
                 answers: [],
                 score: 0,
-                totalTime: 0
+                totalTime: 0,
+                dateTime: ''
             },
             "Objects & Arrays": {
                 answers: [],
                 score: 0,
-                totalTime: 0
+                totalTime: 0,
+                dateTime: ''
             }
         }
     };
@@ -191,6 +194,9 @@ function seeResults() {
 
 
     users[currentUser].themes[selectedTheme].score = score;
+    users[currentUser].themes[selectedTheme].dateTime = new Date().toISOString();
+
+
     localStorage.setItem("users", JSON.stringify(users));
 
     score = 0;

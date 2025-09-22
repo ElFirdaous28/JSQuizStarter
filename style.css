@@ -194,6 +194,12 @@
      margin: 0 auto;
  }
 
+ .theme-box {
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+ }
+
  .theme-box,
  .login-box {
      background: white;
@@ -647,6 +653,7 @@
      border-radius: 16px;
      padding: 10px 20px;
      font-size: 1.1rem;
+     margin-bottom: 10px;
  }
 
  #see-more-button {
